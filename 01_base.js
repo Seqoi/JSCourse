@@ -13,3 +13,11 @@ const person = {
 console.log(person.firstName)
 const key = 'languages'
 console.log(person.languages.length)
+console.log(person.languages.length)
+person.hasWife = true
+
+person.isProgrammer = true
+
+console.log(person)
+
+//База закончена
