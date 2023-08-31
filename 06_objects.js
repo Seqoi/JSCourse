@@ -13,6 +13,7 @@ const person = {
         console.info('Info about ',this.name)
     }
 }
+//console.log(person)
 
 // console.log(person.name)
 // const ageKey = 'age'
@@ -54,8 +55,40 @@ const person = {
 const logger = {
     keys(obj){
         console.log('Object keys ', Object.keys(this))
+    },
+    keysAndValues(obj){
+        // My own method
+        // for (let key in this) {
+        //     if (this.hasOwnProperty(key)) {//проверка на наличие
+        //         //прототипа ибо цикл фор-ин заходит и в прототип
+        //         console.log(key,':',this[key])
+        //         // console.log('value', person[key])
+        //
+        //     }
+        // }
+
+        //now more efficient method
+        Object.keys(this).forEach(key => {
+            console.log(`'${key}' : ${this[key]}`)
+        })
+    },
+    withParams(top = false, between = false, bottom = false){
+        if (top){
+            console.log('-----start-----')
+        }
+        Object.keys(this).forEach((key, index,array) => {
+            console.log(`'${key}' : ${this[key]}`)
+            if (between && index !== array.length - 1){
+                console.log('----------')
+            }
+        })
+        if (bottom){
+            console.log('----- end -----')
+        }
     }
 }
 // const bound = logger.keys.bind(person)
 // bound()
-// logger.keys.call(person)
+//logger.keys.call(logger)
+logger.withParams.call(person,true,true,true)
+logger.withParams.apply(person,[true,true,true])
